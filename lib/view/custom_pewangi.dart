@@ -26,26 +26,32 @@ class CustomPewangi extends GetView<PembayaranController> {
               );
             }),
           ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-            color: const Color(0xffEFEFEF),
-            child: Obx((() => Text(controller.pilihan.value == ""
-                ? ""
-                : 'Pilihan: ${controller.pilihan}'))),
-          )
+          Obx(
+            () => Container(
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              color: controller.pilihan.value == ""
+                  ? Colors.transparent
+                  : const Color(0xffEFEFEF),
+              child: Text(controller.pilihan.value == ""
+                  ? ""
+                  : 'Pilihan: ${controller.pilihan}'),
+            ),
+          ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Get.back();
-      //   },
-      // ),
-      bottomSheet: ElevatedButton(
-        child: Text("Lanjutkan"),
-        onPressed: () {
-          Get.back();
-        },
+      bottomSheet: SizedBox(
+        width: double.infinity - 10,
+        child: ElevatedButton(
+          child: const Text("Lanjutkan"),
+          onPressed: () {
+            if (controller.pilihan.value == "") {
+              null;
+            } else {
+              Get.back();
+            }
+          },
+        ),
       ),
     );
   }
