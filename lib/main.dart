@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mvp/components/card_pewangi.dart';
-import 'package:mvp/controller/pembayaran_controller.dart';
+import 'package:mvp/sample_binding.dart';
 import 'package:mvp/view/custom_pewangi.dart';
+import 'package:mvp/view/pembayaran.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,32 +13,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      initialRoute: '/pembayaran',
+      getPages: [
+        GetPage(
+          name: '/pembayaran',
+          page: () => const Pembayaran(),
+          binding: SampleBind(),
+        ),
+        GetPage(
+          name: '/custom_pewangi',
+          page: () => CustomPewangi(),
+          binding: SampleBind(),
+        ),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Pembayaran(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final controller = Get.put(PembayaranController());
-
-  List<CardPewangi> listPewangi = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPewangi();
   }
 }

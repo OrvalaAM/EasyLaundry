@@ -5,9 +5,7 @@ import '../components/card_pewangi.dart';
 import '../controller/pembayaran_controller.dart';
 
 // ignore: must_be_immutable
-class CustomPewangi extends StatelessWidget {
-  final controller = Get.put(PembayaranController());
-
+class CustomPewangi extends GetView<PembayaranController> {
   List<CardPewangi> listPewangi = [];
 
   CustomPewangi({super.key});
@@ -29,10 +27,25 @@ class CustomPewangi extends StatelessWidget {
             }),
           ),
           Container(
-            color: Colors.red,
-            child: Center(child: Obx((() => Text('${controller.pilihan}')))),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
+            color: const Color(0xffEFEFEF),
+            child: Obx((() => Text(controller.pilihan.value == ""
+                ? ""
+                : 'Pilihan: ${controller.pilihan}'))),
           )
         ],
+      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Get.back();
+      //   },
+      // ),
+      bottomSheet: ElevatedButton(
+        child: Text("Lanjutkan"),
+        onPressed: () {
+          Get.back();
+        },
       ),
     );
   }

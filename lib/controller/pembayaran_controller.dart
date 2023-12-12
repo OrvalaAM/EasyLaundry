@@ -18,6 +18,10 @@ class PembayaranController extends GetxController {
     pilihan.value = listPewangi[$index].nama;
   }
 
+  void clearPilihanPewangi() {
+    pilihan.value = "";
+  }
+
   List<CardPewangi> getListPewangi() {
     return listPewangi;
   }
