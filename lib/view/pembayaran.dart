@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/components/button_clear_pewangi.dart';
-import 'package:mvp/components/button_select_pewangi.dart';
+import 'package:mvp/components/button_set_pewangi.dart';
 
 import '../controller/pembayaran_controller.dart';
 
@@ -255,6 +255,12 @@ class Pembayaran extends GetView<PembayaranController> {
             ]),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/form_pemesanan');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

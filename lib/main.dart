@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/sample_binding.dart';
 import 'package:mvp/view/custom_pewangi.dart';
+import 'package:mvp/view/form_pemesanan.dart';
 import 'package:mvp/view/pembayaran.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/pembayaran',
       getPages: [
         GetPage(
@@ -24,6 +26,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/custom_pewangi',
           page: () => CustomPewangi(),
+          binding: SampleBind(),
+        ),
+        GetPage(
+          name: '/form_pemesanan',
+          page: () => FormPemesanan(),
           binding: SampleBind(),
         ),
       ],
