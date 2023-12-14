@@ -13,29 +13,49 @@ class CustomPewangi extends GetView<PembayaranController> {
   Widget build(BuildContext context) {
     listPewangi = controller.getListPewangi();
     return Scaffold(
-      body: ListView(
+      body: Stack(
         children: <Widget>[
-          GridView.count(
-            crossAxisCount: 2,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            children: List.generate(listPewangi.length, (index) {
-              return GestureDetector(
-                onTap: () => controller.setPilihanPewangi(index),
-                child: listPewangi[index],
-              );
-            }),
+          ListView(
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(bottom: 100),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: List.generate(listPewangi.length, (index) {
+                    return GestureDetector(
+                      onTap: () => controller.setPilihanPewangi(index),
+                      child: listPewangi[index],
+                    );
+                  }),
+                ),
+              ),
+            ],
           ),
-          Obx(
-            () => Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(10),
-              color: controller.pilihan.value == ""
-                  ? Colors.transparent
-                  : const Color(0xffEFEFEF),
-              child: Text(controller.pilihan.value == ""
-                  ? ""
-                  : 'Pilihan: ${controller.pilihan}'),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Obx(
+              () => Container(
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 70),
+                padding: const EdgeInsets.all(10),
+                color: controller.pilihan.value == ""
+                    ? Colors.transparent
+                    : const Color(0xffEFEFEF),
+                child: Text(
+                  controller.pilihan.value == ""
+                      ? ""
+                      : 'Terpilih: ${controller.pilihan}',
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -43,7 +63,8 @@ class CustomPewangi extends GetView<PembayaranController> {
       bottomSheet: SizedBox(
         width: double.infinity - 10,
         child: ElevatedButton(
-          child: const Text("Lanjutkan"),
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green, foregroundColor: Colors.white),
           onPressed: () {
             if (controller.pilihan.value == "") {
               null;
@@ -51,6 +72,7 @@ class CustomPewangi extends GetView<PembayaranController> {
               Get.back();
             }
           },
+          child: const Text("Lanjutkan"),
         ),
       ),
     );

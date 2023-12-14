@@ -56,7 +56,7 @@ class FormPemesanan extends StatelessWidget {
               controller: alamatController,
               decoration: const InputDecoration(
                   hintText: "Alamat (opsional)",
-                  icon: Image(image: AssetImage("icons/location.png")),
+                  icon: Image(image: AssetImage("assets/icons/location.png")),
                   border: InputBorder.none),
             ),
           ),
@@ -68,7 +68,7 @@ class FormPemesanan extends StatelessWidget {
               hintText: "Jenis Layanan",
               width: MediaQuery.of(context).size.width - 20,
               leadingIcon: const Image(
-                image: AssetImage("icons/jenis_layanan.png"),
+                image: AssetImage("assets/icons/jenis_layanan.png"),
               ),
               dropdownMenuEntries:
                   list.map<DropdownMenuEntry<String>>((String value) {
@@ -84,7 +84,8 @@ class FormPemesanan extends StatelessWidget {
               controller: namaLayananController,
               decoration: const InputDecoration(
                   hintText: "Nama Layanan",
-                  icon: Image(image: AssetImage("icons/washing_machine.png")),
+                  icon: Image(
+                      image: AssetImage("assets/icons/washing_machine.png")),
                   border: InputBorder.none),
             ),
           ),
@@ -96,7 +97,7 @@ class FormPemesanan extends StatelessWidget {
               controller: kuantitasController,
               decoration: const InputDecoration(
                   hintText: "Kuantitas",
-                  icon: Image(image: AssetImage("icons/quantity.png")),
+                  icon: Image(image: AssetImage("assets/icons/quantity.png")),
                   border: InputBorder.none),
             ),
           ),
@@ -108,43 +109,41 @@ class FormPemesanan extends StatelessWidget {
               controller: hargaController,
               decoration: const InputDecoration(
                   hintText: "Harga",
-                  icon: Image(image: AssetImage("icons/price.png")),
+                  icon: Image(image: AssetImage("assets/icons/price.png")),
                   border: InputBorder.none),
             ),
           ),
-          Container(
-            child: Row(children: <Widget>[
-              Expanded(
-                child: Container(
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(left: 5),
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black)),
-                  child: TextField(
-                    controller: estimasiController,
-                    decoration: const InputDecoration(
-                        hintText: "Estimasi",
-                        icon: Image(image: AssetImage("icons/estimasi.png")),
-                        border: InputBorder.none),
-                  ),
-                ),
-              ),
-              Container(
+          Row(children: <Widget>[
+            Expanded(
+              child: Container(
                 margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.only(left: 5),
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
-                child: DropdownMenu(
-                  controller: jenisLayananController,
-                  hintText: "Hari",
-                  dropdownMenuEntries:
-                      list.map<DropdownMenuEntry<String>>((String value) {
-                    return DropdownMenuEntry<String>(
-                        value: value, label: value);
-                  }).toList(),
+                child: TextField(
+                  controller: estimasiController,
+                  decoration: const InputDecoration(
+                      hintText: "Estimasi",
+                      icon:
+                          Image(image: AssetImage("assets/icons/estimasi.png")),
+                      border: InputBorder.none),
                 ),
               ),
-            ]),
-          )
+            ),
+            Container(
+              margin: const EdgeInsets.all(10),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: DropdownMenu(
+                controller: jenisLayananController,
+                hintText: "Hari",
+                dropdownMenuEntries:
+                    list.map<DropdownMenuEntry<String>>((String value) {
+                  return DropdownMenuEntry<String>(value: value, label: value);
+                }).toList(),
+              ),
+            ),
+          ])
         ],
       ),
     );

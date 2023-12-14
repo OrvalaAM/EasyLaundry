@@ -208,50 +208,51 @@ class Pembayaran extends GetView<PembayaranController> {
                   child: const Text(
                     "Salin",
                     style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 8,
-                    ),
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 8,
+                        color: Colors.black),
                   ),
                 )
               ],
             ),
           ),
+          const Image(
+            image: AssetImage("assets/icons/tiga_digit.png"),
+          ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(children: [
               Expanded(
-                child: Container(
-                  child: Row(children: [
-                    Icon(Icons.wallet_giftcard),
-                    Container(
-                      margin: EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Isi saldo dengan metode",
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
-                            ),
+                child: Row(children: [
+                  const Image(image: AssetImage("assets/icons/dompet.png")),
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Isi saldo dengan metode",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 10,
                           ),
-                          Text(
-                            "Pilih metode isi saldo",
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 8,
-                            ),
+                        ),
+                        Text(
+                          "Pilih metode isi saldo",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 8,
                           ),
-                        ],
-                      ),
-                    )
-                  ]),
-                ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
               ),
-              Icon(Icons.ad_units)
+              const Image(image: AssetImage("assets/icons/more.png")),
             ]),
           )
         ],
