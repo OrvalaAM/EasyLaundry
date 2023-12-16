@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
+  image_picker: ^1.0.5
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  path: ^1.8.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/gambar_kosong.png
     - assets/icons/more.png
     - assets/icons/dompet.png
     - assets/icons/estimasi.png
@@ -71,6 +76,12 @@ flutter:
     - assets/icons/quantity.png
     - assets/icons/washing_machine.png
     - assets/icons/tiga_digit.png
+    - assets/pewangi/fresh-ocean.jpg
+    - assets/pewangi/candy.jpg
+    - assets/pewangi/coffee.jpg
+    - assets/pewangi/sakura.jpg
+    - assets/pewangi/stroberi.jpg
+    - assets/pewangi/jasmine.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

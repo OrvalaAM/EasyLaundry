@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mvp/controller/pewangi_controller.dart';
 
 import '../components/card_pewangi.dart';
-import '../controller/pembayaran_controller.dart';
 
 // ignore: must_be_immutable
-class CustomPewangi extends GetView<PembayaranController> {
+class CustomPewangi extends GetView<PewangiController> {
   List<CardPewangi> listPewangi = [];
 
   CustomPewangi({super.key});
@@ -59,6 +59,12 @@ class CustomPewangi extends GetView<PembayaranController> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/tambah_pewangi');
+        },
+        child: Icon(Icons.add),
       ),
       bottomSheet: SizedBox(
         width: double.infinity - 10,

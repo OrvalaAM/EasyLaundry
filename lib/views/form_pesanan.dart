@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mvp/controller/pesanan_controller.dart';
 
-// ignore: must_be_immutable
-class FormPemesanan extends StatelessWidget {
-  TextEditingController namaController = TextEditingController();
-  TextEditingController hpController = TextEditingController();
-  TextEditingController alamatController = TextEditingController();
-  TextEditingController jenisLayananController = TextEditingController();
-  TextEditingController namaLayananController = TextEditingController();
-  TextEditingController kuantitasController = TextEditingController();
-  TextEditingController hargaController = TextEditingController();
-  TextEditingController estimasiController = TextEditingController();
-
-  List<String> list = <String>['Cuci Setrika', 'Cuci', 'Setrika'];
-  FormPemesanan({super.key});
+class FormPesanan extends GetView<PesananController> {
+  const FormPesanan({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +14,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: namaController,
+              controller: controller.namaController,
               decoration: const InputDecoration(
                   hintText: "Nama",
                   icon: Icon(Icons.person),
@@ -35,7 +26,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: hpController,
+              controller: controller.hpController,
               decoration: const InputDecoration(
                   hintText: "No. Handphone",
                   icon: Icon(Icons.call),
@@ -53,7 +44,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: alamatController,
+              controller: controller.alamatController,
               decoration: const InputDecoration(
                   hintText: "Alamat (opsional)",
                   icon: Image(image: AssetImage("assets/icons/location.png")),
@@ -64,14 +55,14 @@ class FormPemesanan extends StatelessWidget {
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: DropdownMenu(
-              controller: jenisLayananController,
+              controller: controller.jenisLayananController,
               hintText: "Jenis Layanan",
               width: MediaQuery.of(context).size.width - 20,
               leadingIcon: const Image(
                 image: AssetImage("assets/icons/jenis_layanan.png"),
               ),
-              dropdownMenuEntries:
-                  list.map<DropdownMenuEntry<String>>((String value) {
+              dropdownMenuEntries: controller.list
+                  .map<DropdownMenuEntry<String>>((String value) {
                 return DropdownMenuEntry<String>(value: value, label: value);
               }).toList(),
             ),
@@ -81,7 +72,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: namaLayananController,
+              controller: controller.namaLayananController,
               decoration: const InputDecoration(
                   hintText: "Nama Layanan",
                   icon: Image(
@@ -94,7 +85,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: kuantitasController,
+              controller: controller.kuantitasController,
               decoration: const InputDecoration(
                   hintText: "Kuantitas",
                   icon: Image(image: AssetImage("assets/icons/quantity.png")),
@@ -106,7 +97,7 @@ class FormPemesanan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: hargaController,
+              controller: controller.hargaController,
               decoration: const InputDecoration(
                   hintText: "Harga",
                   icon: Image(image: AssetImage("assets/icons/price.png")),
@@ -121,7 +112,7 @@ class FormPemesanan extends StatelessWidget {
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.black)),
                 child: TextField(
-                  controller: estimasiController,
+                  controller: controller.estimasiController,
                   decoration: const InputDecoration(
                       hintText: "Estimasi",
                       icon:
@@ -135,16 +126,25 @@ class FormPemesanan extends StatelessWidget {
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.black)),
               child: DropdownMenu(
-                controller: jenisLayananController,
+                controller: controller.jenisLayananController,
                 hintText: "Hari",
-                dropdownMenuEntries:
-                    list.map<DropdownMenuEntry<String>>((String value) {
+                dropdownMenuEntries: controller.list
+                    .map<DropdownMenuEntry<String>>((String value) {
                   return DropdownMenuEntry<String>(value: value, label: value);
                 }).toList(),
               ),
             ),
-          ])
+          ]),
+          ElevatedButton(
+              onPressed: () => controller.addPesanan(),
+              child: Text('Buat pesanan'))
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed('/daftar_pesanan');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

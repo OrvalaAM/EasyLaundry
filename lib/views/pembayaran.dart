@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/components/button_clear_pewangi.dart';
 import 'package:mvp/components/button_set_pewangi.dart';
+import 'package:mvp/controller/pewangi_controller.dart';
 
-import '../controller/pembayaran_controller.dart';
-
-class Pembayaran extends GetView<PembayaranController> {
+class Pembayaran extends GetView<PewangiController> {
   const Pembayaran({super.key});
 
   @override
@@ -199,11 +198,9 @@ class Pembayaran extends GetView<PembayaranController> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Colors.white, // Warna latar belakang tombol (putih)
-                    foregroundColor: Colors.blue, // Warna teks tombol (biru)
-                    side: const BorderSide(
-                        color: Colors.blue), // Warna border (biru)
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.blue,
+                    side: const BorderSide(color: Colors.blue),
                   ),
                   child: const Text(
                     "Salin",
@@ -262,6 +259,21 @@ class Pembayaran extends GetView<PembayaranController> {
           Get.toNamed('/form_pemesanan');
         },
         child: Icon(Icons.add),
+      ),
+      bottomSheet: SizedBox(
+        width: double.infinity - 10,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green, foregroundColor: Colors.white),
+          onPressed: () {
+            if (controller.pilihan.value == "") {
+              null;
+            } else {
+              Get.back();
+            }
+          },
+          child: const Text("Lanjutkan"),
+        ),
       ),
     );
   }

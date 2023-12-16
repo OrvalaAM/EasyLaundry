@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
-import 'package:mvp/controller/pembayaran_controller.dart';
+import 'controller/pesanan_controller.dart';
+import 'controller/pewangi_controller.dart';
 
 class SampleBind extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<PembayaranController>(() => PembayaranController());
+    Get.lazyPut<PesananController>(() => PesananController());
+    Get.lazyPut<PewangiController>(() => PewangiController());
   }
 }

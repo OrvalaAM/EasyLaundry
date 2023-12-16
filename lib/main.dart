@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/sample_binding.dart';
-import 'package:mvp/view/custom_pewangi.dart';
-import 'package:mvp/view/form_pemesanan.dart';
-import 'package:mvp/view/pembayaran.dart';
+import 'package:mvp/views/custom_pewangi.dart';
+import 'package:mvp/views/daftar_pesanan.dart';
+import 'package:mvp/views/form_pesanan.dart';
+import 'package:mvp/views/pembayaran.dart';
+import 'package:mvp/views/tambah_pewangi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +32,17 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/form_pemesanan',
-          page: () => FormPemesanan(),
+          page: () => FormPesanan(),
+          binding: SampleBind(),
+        ),
+        GetPage(
+          name: '/tambah_pewangi',
+          page: () => TambahPewangi(),
+          binding: SampleBind(),
+        ),
+        GetPage(
+          name: '/daftar_pesanan',
+          page: () => const DaftarPesanan(),
           binding: SampleBind(),
         ),
       ],
