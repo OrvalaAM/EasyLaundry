@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mvp/controller/pewangi_controller.dart';
 
 import '../components/card_pewangi.dart';
+import '../models/pewangi_model.dart';
 
 // ignore: must_be_immutable
 class CustomPewangi extends GetView<PewangiController> {
@@ -11,28 +12,60 @@ class CustomPewangi extends GetView<PewangiController> {
   CustomPewangi({super.key});
   @override
   Widget build(BuildContext context) {
-    listPewangi = controller.getListPewangi();
+    // listPewangi = controller.getListPewangi();
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          ListView(
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(bottom: 100),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  children: List.generate(listPewangi.length, (index) {
-                    return GestureDetector(
-                      onTap: () => controller.setPilihanPewangi(index),
-                      child: listPewangi[index],
-                    );
-                  }),
+          FutureBuilder<List<PewangiModel>>(
+            future: controller.db.getAllPewangi(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data!.isEmpty) {
+                  return const Center(
+                    child: Text("Tidak ada pesanan"),
+                  );
+                }
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 100),
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: List.generate(snapshot.data!.length, (index) {
+                      return GestureDetector(
+                        onTap: () => controller
+                            .setPilihanPewangi(snapshot.data![index].nama),
+                        child: CardPewangi(model: snapshot.data![index]),
+                      );
+                    }),
+                  ),
+                );
+              }
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
                 ),
-              ),
-            ],
+              );
+            },
           ),
+          // ListView(
+          //   children: <Widget>[
+          //     Container(
+          //       margin: const EdgeInsets.only(bottom: 100),
+          //       child: GridView.count(
+          //         crossAxisCount: 2,
+          //         physics: const NeverScrollableScrollPhysics(),
+          //         shrinkWrap: true,
+          //         children: List.generate(listPewangi.length, (index) {
+          //           return GestureDetector(
+          //             onTap: () => controller.setPilihanPewangi(index),
+          //             child: listPewangi[index],
+          //           );
+          //         }),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           Positioned(
             bottom: 0,
             left: 0,

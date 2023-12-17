@@ -52,4 +52,9 @@ class DatabaseInstance {
     final query = await _database!.insert('pesanan', row);
     return query;
   }
+
+  Future<int> insertPewangi(Map<String, dynamic> row) async {
+    final query = await _database!.insert('pewangi', row);
+    return query;
+  }
 }

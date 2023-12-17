@@ -18,9 +18,6 @@ class PesananController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    // db.database().then((value) {
-    //   super.onInit();
-    // });
     super.onInit();
     await Future.delayed(Duration.zero, () async {
       await db.database();

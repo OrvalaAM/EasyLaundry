@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/tambah_pewangi',
           page: () => TambahPewangi(),
-          binding: SampleBind(),
+          // binding: SampleBind(),
         ),
         GetPage(
           name: '/daftar_pesanan',
