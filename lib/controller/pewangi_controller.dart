@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mvp/controller/pesanan_controller.dart';
 import 'package:mvp/database_instance.dart';
 import 'package:path_provider/path_provider.dart';
 // import 'package:permission_handler/permission_handler.dart';
@@ -10,12 +11,12 @@ import 'package:path/path.dart' as p;
 
 class PewangiController extends GetxController {
   DatabaseInstance db = DatabaseInstance();
-
   TextEditingController namaParfumController = TextEditingController();
-
   Directory? directory;
-
   String repo = '';
+  File? selectedImage;
+  var path = "".obs;
+  var pilihan = "".obs;
 
   @override
   Future<void> onInit() async {
@@ -31,9 +32,6 @@ class PewangiController extends GetxController {
     });
   }
 
-  File? selectedImage;
-
-  var path = "".obs;
   Future pickImageFromGalery() async {
     // if (await _requestPermission(Permission.storage)) {
     final returnedImage =
@@ -45,29 +43,14 @@ class PewangiController extends GetxController {
     // }
   }
 
-  var pilihan = "".obs;
-
-  // List<CardPewangi> listPewangi = [
-  //   const CardPewangi(
-  //       nama: 'Fresh Ocean', foto: 'assets/pewangi/fresh-ocean.jpg'),
-  //   const CardPewangi(nama: 'Candy', foto: 'assets/pewangi/candy.jpg'),
-  //   const CardPewangi(nama: 'Coffee Cream', foto: 'assets/pewangi/coffee.jpg'),
-  //   const CardPewangi(nama: 'Sakura', foto: 'assets/pewangi/sakura.jpg'),
-  //   const CardPewangi(nama: 'Strawberry', foto: 'assets/pewangi/stroberi.jpg'),
-  //   const CardPewangi(nama: 'Jasmine', foto: 'assets/pewangi/jasmine.png'),
-  // ];
-
   void setPilihanPewangi(nama) {
     pilihan.value = nama;
   }
 
-  void clearPilihanPewangi() {
-    pilihan.value = "";
+  void setFixPewangi() {
+    final controllerPesanan = Get.find<PesananController>();
+    controllerPesanan.pilihan.value = pilihan.value;
   }
-
-  // List<CardPewangi> getListPewangi() {
-  //   return listPewangi;
-  // }
 
   Future<bool> saveFile(String nama) async {
     try {

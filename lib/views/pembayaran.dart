@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/components/button_clear_pewangi.dart';
 import 'package:mvp/components/button_set_pewangi.dart';
-import 'package:mvp/controller/pewangi_controller.dart';
+import 'package:mvp/controller/pesanan_controller.dart';
 
-class Pembayaran extends GetView<PewangiController> {
+class Pembayaran extends GetView<PesananController> {
   const Pembayaran({super.key});
 
   @override

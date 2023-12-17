@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mvp/controller/pewangi_controller.dart';
 
 class ButtonSetPewangi extends StatelessWidget {
   const ButtonSetPewangi({super.key});
@@ -13,6 +14,8 @@ class ButtonSetPewangi extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       onTap: () {
+        final controllerPewangi = Get.find<PewangiController>();
+        controllerPewangi.pilihan.value = '';
         Get.toNamed('/custom_pewangi');
       },
     );

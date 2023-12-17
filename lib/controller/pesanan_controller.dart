@@ -4,7 +4,6 @@ import 'package:mvp/database_instance.dart';
 
 class PesananController extends GetxController {
   DatabaseInstance db = DatabaseInstance();
-
   TextEditingController namaController = TextEditingController();
   TextEditingController hpController = TextEditingController();
   TextEditingController alamatController = TextEditingController();
@@ -13,8 +12,8 @@ class PesananController extends GetxController {
   TextEditingController kuantitasController = TextEditingController();
   TextEditingController hargaController = TextEditingController();
   TextEditingController estimasiController = TextEditingController();
-
   List<String> list = <String>['Cuci Setrika', 'Cuci', 'Setrika'];
+  var pilihan = "".obs;
 
   @override
   Future<void> onInit() async {
@@ -24,11 +23,9 @@ class PesananController extends GetxController {
     });
   }
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   db.database();
-  // }
+  void clearPilihanPewangi() {
+    pilihan.value = "";
+  }
 
   void addPesanan() {
     db.insertPesanan({

@@ -5,14 +5,10 @@ import 'package:mvp/controller/pewangi_controller.dart';
 import '../components/card_pewangi.dart';
 import '../models/pewangi_model.dart';
 
-// ignore: must_be_immutable
 class CustomPewangi extends GetView<PewangiController> {
-  List<CardPewangi> listPewangi = [];
-
-  CustomPewangi({super.key});
+  const CustomPewangi({super.key});
   @override
   Widget build(BuildContext context) {
-    // listPewangi = controller.getListPewangi();
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -48,24 +44,6 @@ class CustomPewangi extends GetView<PewangiController> {
               );
             },
           ),
-          // ListView(
-          //   children: <Widget>[
-          //     Container(
-          //       margin: const EdgeInsets.only(bottom: 100),
-          //       child: GridView.count(
-          //         crossAxisCount: 2,
-          //         physics: const NeverScrollableScrollPhysics(),
-          //         shrinkWrap: true,
-          //         children: List.generate(listPewangi.length, (index) {
-          //           return GestureDetector(
-          //             onTap: () => controller.setPilihanPewangi(index),
-          //             child: listPewangi[index],
-          //           );
-          //         }),
-          //       ),
-          //     ),
-          //   ],
-          // ),
           Positioned(
             bottom: 0,
             left: 0,
@@ -108,6 +86,7 @@ class CustomPewangi extends GetView<PewangiController> {
             if (controller.pilihan.value == "") {
               null;
             } else {
+              controller.setFixPewangi();
               Get.back();
             }
           },
