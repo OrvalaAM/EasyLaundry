@@ -136,7 +136,7 @@ class FormPesanan extends GetView<PesananController> {
             ),
           ]),
           ElevatedButton(
-              onPressed: () => controller.addPesanan(),
+              onPressed: () => Get.toNamed('/pembayaran'),
               child: Text('Buat pesanan'))
         ],
       ),

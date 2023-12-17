@@ -4,6 +4,7 @@ import 'package:mvp/sample_binding.dart';
 import 'package:mvp/views/custom_pewangi.dart';
 import 'package:mvp/views/daftar_pesanan.dart';
 import 'package:mvp/views/form_pesanan.dart';
+import 'package:mvp/views/home.dart';
 import 'package:mvp/views/pembayaran.dart';
 import 'package:mvp/views/tambah_pewangi.dart';
 
@@ -18,8 +19,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/pembayaran',
+      initialRoute: '/home',
       getPages: [
+        GetPage(
+          name: '/home',
+          page: () => const Home(),
+          binding: SampleBind(),
+        ),
         GetPage(
           name: '/pembayaran',
           page: () => const Pembayaran(),
