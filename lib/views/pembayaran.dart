@@ -41,7 +41,7 @@ class Pembayaran extends GetView<PesananController> {
                     Expanded(
                         child: Text(
                       controller.jenisLayananController.text,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
@@ -49,7 +49,7 @@ class Pembayaran extends GetView<PesananController> {
                     )),
                     Text(
                       '${controller.kuantitasController.text} kg',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
@@ -91,7 +91,7 @@ class Pembayaran extends GetView<PesananController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Jumlah pembayaran",
                   style: TextStyle(
                     fontFamily: 'Poppins',
@@ -101,13 +101,13 @@ class Pembayaran extends GetView<PesananController> {
                 ),
                 Text(
                   'Rp${NumberFormat.decimalPattern().format(controller.subTotal)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     fontSize: 19,
                   ),
                 ),
-                Text(
+                const Text(
                   "Pembayaran",
                   style: TextStyle(
                     fontFamily: 'Poppins',
@@ -123,7 +123,7 @@ class Pembayaran extends GetView<PesananController> {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                     child: Text(
                   "Nominal pembayaran",
                   style: TextStyle(
@@ -134,7 +134,7 @@ class Pembayaran extends GetView<PesananController> {
                 )),
                 Text(
                   'Rp${NumberFormat.decimalPattern().format(controller.subTotal)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
@@ -148,7 +148,7 @@ class Pembayaran extends GetView<PesananController> {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: Text(
                     "Kode unik",
                     style: TextStyle(
@@ -160,7 +160,7 @@ class Pembayaran extends GetView<PesananController> {
                 ),
                 Text(
                   '+Rp${controller.kodeUnik}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
@@ -190,7 +190,7 @@ class Pembayaran extends GetView<PesananController> {
                 Expanded(
                     child: Text(
                   'Rp${NumberFormat.decimalPattern().format(controller.total)}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -254,12 +254,6 @@ class Pembayaran extends GetView<PesananController> {
             ]),
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed('/form_pemesanan');
-        },
-        child: Icon(Icons.add),
       ),
       bottomSheet: SizedBox(
         width: double.infinity - 10,

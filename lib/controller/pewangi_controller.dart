@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mvp/controller/pesanan_controller.dart';
 import 'package:mvp/database_instance.dart';
-import 'package:mvp/models/pewangi_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
@@ -18,25 +17,7 @@ class PewangiController extends GetxController {
   var path = "".obs;
   var pilihan = "".obs;
   var hapus = false.obs;
-  // List<PewangiModel> listAllPewangi = [];
 
-  // late Future<List<PewangiModel>> listFuturePewangi = Future.delayed(
-  //   const Duration(milliseconds: 1000),
-  //   () => listAllPewangi,
-  // );
-
-  // void ambilListPewangi() {
-  //   db.getAllPewangi().then(
-  //     (response) {
-  //       if (response != []) {
-  //         listAllPewangi = response;
-  //         firstTime = false;
-  //         notifyListeners();
-  //         loadMore();
-  //       }
-  //     },
-  //   );
-  // }
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -87,13 +68,15 @@ class PewangiController extends GetxController {
     return false;
   }
 
-  void deleteFile(String fileName) {
+  void deleteFile(String fileName) async {
     try {
       File delete = File('$repo/$fileName');
       if (delete.existsSync()) {
-        delete.deleteSync();
+        await delete.delete();
       }
-    } catch (e) {}
+    } catch (e) {
+      debugPrint(e as String?);
+    }
   }
 
   void addPewangi() async {

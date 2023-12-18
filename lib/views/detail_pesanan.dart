@@ -57,7 +57,7 @@ class DetailPesanan extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Customer'),
+                    const Text('Customer'),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -74,7 +74,7 @@ class DetailPesanan extends StatelessWidget {
                     ),
                   ]),
             ),
-            Image(
+            const Image(
               image: AssetImage('assets/kirim_via.png'),
             ),
             Container(
@@ -84,8 +84,8 @@ class DetailPesanan extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Status pesanan'),
-                    Image(
+                    const Text('Status pesanan'),
+                    const Image(
                       image: AssetImage('assets/status_detail.png'),
                     ),
                     Row(
@@ -127,7 +127,7 @@ class DetailPesanan extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Rincian pesanan'),
+                    const Text('Rincian pesanan'),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -165,12 +165,12 @@ class DetailPesanan extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
+                        const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Subtotal'),
-                            const Text('Kode unik'),
-                            const Text('Total'),
+                            Text('Subtotal'),
+                            Text('Kode unik'),
+                            Text('Total'),
                           ],
                         ),
                         Column(

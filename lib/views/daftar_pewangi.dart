@@ -10,70 +10,76 @@ class DaftarPewangi extends GetView<PewangiController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder<List<PewangiModel>>(
-        future: controller.db.getAllPewangi(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data!.isEmpty) {
-              return const Center(
-                child: Text("Tidak ada pewangi"),
+    return PopScope(
+      onPopInvoked: (didPop) async {
+        controller.hapus.value = false;
+      },
+      child: Scaffold(
+        body: FutureBuilder<List<PewangiModel>>(
+          future: controller.db.getAllPewangi(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data!.isEmpty) {
+                return const Center(
+                  child: Text("Tidak ada pewangi"),
+                );
+              }
+              return Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: List.generate(snapshot.data!.length, (index) {
+                    return Obx(
+                      () {
+                        return GestureDetector(
+                          onTap: () => controller
+                              .setPilihanPewangi(snapshot.data![index].nama),
+                          child: controller.hapus.value
+                              ? CardHapusPewangi(model: snapshot.data![index])
+                              : CardPewangi(model: snapshot.data![index]),
+                        );
+                      },
+                    );
+                  }),
+                ),
               );
             }
-            return Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(10),
-              child: GridView.count(
-                crossAxisCount: 2,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                children: List.generate(snapshot.data!.length, (index) {
-                  return Obx(
-                    () {
-                      return GestureDetector(
-                        onTap: () => controller
-                            .setPilihanPewangi(snapshot.data![index].nama),
-                        child: controller.hapus.value
-                            ? CardHapusPewangi(model: snapshot.data![index])
-                            : CardPewangi(model: snapshot.data![index]),
-                      );
-                    },
-                  );
-                }),
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.black,
               ),
             );
-          }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.black,
+          },
+        ),
+        bottomSheet: Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white),
+                onPressed: () {
+                  Get.toNamed('/tambah_pewangi');
+                },
+                child: const Text("Tambah pewangi"),
+              ),
             ),
-          );
-        },
-      ),
-      bottomSheet: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green, foregroundColor: Colors.white),
-              onPressed: () {
-                Get.toNamed('/tambah_pewangi');
-              },
-              child: const Text("Tambah pewangi"),
-            ),
-          ),
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red, foregroundColor: Colors.white),
-              onPressed: () {
-                controller.modeHapus();
-              },
-              child: Icon(Icons.delete),
-            ),
-          )
-        ],
+            Expanded(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red, foregroundColor: Colors.white),
+                onPressed: () {
+                  controller.modeHapus();
+                },
+                child: const Icon(Icons.delete),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
