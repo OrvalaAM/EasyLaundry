@@ -29,7 +29,6 @@ class DatabaseInstance {
   }
 
   Future _onCreate(Database db, int version) async {
-    print('bikin tabel pewangi');
     await db.execute(tabelPesanan);
     await db.execute(tabelPewangi);
   }

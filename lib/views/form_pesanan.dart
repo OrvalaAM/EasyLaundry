@@ -213,7 +213,8 @@ class FormPesanan extends GetView<PesananController> {
             ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Get.toNamed('/pembayaran');
+                    // Get.toNamed('/pembayaran');
+                    controller.addPesanan();
                   }
                 },
                 child: const Text('Lanjutkan'))

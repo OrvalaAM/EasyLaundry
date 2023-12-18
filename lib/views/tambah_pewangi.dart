@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/controller/pewangi_controller.dart';
 
+import '../models/pesanan_model.dart';
 import '../models/pewangi_model.dart';
 
 class TambahPewangi extends GetView<PewangiController> {
@@ -42,19 +43,19 @@ class TambahPewangi extends GetView<PewangiController> {
               ? Text(controller.path.value.split('/').last)
               : Container()),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
             child: const Text("Nama parfum: "),
           ),
           TextField(
             controller: controller.namaParfumController,
           ),
-          FutureBuilder<List<PewangiModel>>(
-            future: controller.db.getAllPewangi(),
+          FutureBuilder<List<PesananModel>>(
+            future: controller.db.getAllPesanan(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
                   return const Center(
-                    child: Text("Tidak ada pesanan"),
+                    child: Text("Tidak ada ]"),
                   );
                 }
                 return ListView.builder(
@@ -64,7 +65,7 @@ class TambahPewangi extends GetView<PewangiController> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(snapshot.data![index].nama ?? ''),
-                      subtitle: Text(snapshot.data![index].foto ?? ''),
+                      subtitle: Text(snapshot.data![index].jenisLayanan ?? ''),
                     );
                   },
                 );

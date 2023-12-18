@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mvp/sample_binding.dart';
 import 'package:mvp/views/custom_pewangi.dart';
 import 'package:mvp/views/daftar_pesanan.dart';
+import 'package:mvp/views/detail_pesanan.dart';
 import 'package:mvp/views/form_pesanan.dart';
 import 'package:mvp/views/home.dart';
 import 'package:mvp/views/pembayaran.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/custom_pewangi',
-          page: () => CustomPewangi(),
+          page: () => const CustomPewangi(),
           binding: SampleBind(),
         ),
         GetPage(
@@ -43,12 +44,17 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/tambah_pewangi',
-          page: () => TambahPewangi(),
+          page: () => const TambahPewangi(),
           // binding: SampleBind(),
         ),
         GetPage(
           name: '/daftar_pesanan',
           page: () => const DaftarPesanan(),
+          binding: SampleBind(),
+        ),
+        GetPage(
+          name: '/detail_pesanan',
+          page: () => const DetailPesanan(),
           binding: SampleBind(),
         ),
       ],

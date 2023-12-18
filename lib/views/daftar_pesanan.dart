@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mvp/components/card_pesanan.dart';
 import 'package:mvp/controller/pesanan_controller.dart';
 import 'package:mvp/models/pesanan_model.dart';
 
@@ -21,9 +22,10 @@ class DaftarPesanan extends GetView<PesananController> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data![index].nama ?? ''),
-                );
+                return CardPesanan(model: snapshot.data![index]);
+                // ListTile(
+                //   title: Text(snapshot.data![index].nama ?? ''),
+                // );
               },
             );
           }

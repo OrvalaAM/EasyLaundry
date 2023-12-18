@@ -37,7 +37,6 @@ class PewangiController extends GetxController {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (returnedImage == null) return;
-    print(returnedImage.path);
     path.value = returnedImage.path;
     selectedImage = File(returnedImage.path);
     // }
@@ -61,9 +60,8 @@ class PewangiController extends GetxController {
         await selectedImage!.copy(destinationFile.path);
         destinationFile = await destinationFile.rename(namaBaru);
       }
-      print('sukses buat folder');
     } catch (e) {
-      print(e);
+      debugPrint(e as String?);
     }
     return false;
   }

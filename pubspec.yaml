@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/
     - assets/gambar_kosong.png
+    - assets/status_card.png
     - assets/icons/more.png
     - assets/icons/dompet.png
     - assets/icons/estimasi.png

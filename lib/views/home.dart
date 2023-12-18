@@ -19,13 +19,13 @@ class Home extends StatelessWidget {
               onPressed: () {
                 Get.toNamed('/form_pemesanan');
               },
-              child: Text('Pegawai'),
+              child: const Text('Pegawai'),
             ),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed('/daftar_pesanan');
               },
-              child: Text('Pemilik'),
+              child: const Text('Pemilik'),
             )
           ],
         ),
