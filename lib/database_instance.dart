@@ -12,7 +12,10 @@ class DatabaseInstance {
 
   Database? _database;
   String tabelPesanan =
-      'CREATE TABLE pesanan (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, no_hp TEXT, alamat TEXT NULL, jenis_layanan TEXT, nama_layanan TEXT, kuantitas REAL, harga INTEGER, estimasi INTEGER, created_at TEXT, updated_at TEXT)';
+      '''CREATE TABLE pesanan (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, 
+      no_hp TEXT, alamat TEXT NULL, jenis_layanan TEXT, nama_layanan TEXT, kuantitas REAL, 
+      harga INTEGER, estimasi INTEGER, subtotal INTEGER, kode_unik INTEGER, total INTEGER,
+      pewangi TEXT NULL, created_at TEXT, finished_at TEXT, updated_at TEXT)''';
 
   String tabelPewangi =
       'CREATE TABLE pewangi (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, foto TEXT, created_at TEXT, updated_at TEXT)';

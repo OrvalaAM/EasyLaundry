@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/database_instance.dart';
@@ -13,7 +15,10 @@ class PesananController extends GetxController {
   TextEditingController hargaController = TextEditingController();
   TextEditingController estimasiController = TextEditingController();
   List<String> list = <String>['Cuci Setrika', 'Cuci', 'Setrika'];
-  var pilihan = "".obs;
+  var pewangi = "".obs;
+  int subTotal = 0;
+  int kodeUnik = 0;
+  int total = 0;
 
   @override
   Future<void> onInit() async {
@@ -24,7 +29,15 @@ class PesananController extends GetxController {
   }
 
   void clearPilihanPewangi() {
-    pilihan.value = "";
+    pewangi.value = "";
+  }
+
+  void processTotal() {
+    subTotal =
+        (int.parse(kuantitasController.text) * int.parse(hargaController.text))
+            .round();
+    kodeUnik = Random().nextInt(999) + 1;
+    total = subTotal + kodeUnik;
   }
 
   void addPesanan() {
@@ -37,7 +50,11 @@ class PesananController extends GetxController {
       'kuantitas': kuantitasController.text,
       'harga': hargaController.text,
       'estimasi': estimasiController.text,
+      'pewangi': pewangi.value,
       'created_at': DateTime.now().toString(),
+      'finished_at': DateTime.now()
+          .add(Duration(days: int.parse(estimasiController.text)))
+          .toString(),
       'updated_at': DateTime.now().toString(),
     }).then((response) => Get.toNamed('/daftar_pesanan'));
   }

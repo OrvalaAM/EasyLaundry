@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mvp/components/button_clear_pewangi.dart';
 import 'package:mvp/components/button_set_pewangi.dart';
 import 'package:mvp/controller/pesanan_controller.dart';
+import 'package:intl/intl.dart';
 
 class Pembayaran extends GetView<PesananController> {
   const Pembayaran({super.key});
@@ -24,10 +25,10 @@ class Pembayaran extends GetView<PesananController> {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             color: Colors.grey,
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Detail pesanan:",
                   style: TextStyle(
                     fontFamily: 'Poppins',
@@ -39,7 +40,7 @@ class Pembayaran extends GetView<PesananController> {
                   children: [
                     Expanded(
                         child: Text(
-                      "Cuci dan setrika",
+                      controller.jenisLayananController.text,
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
@@ -47,7 +48,7 @@ class Pembayaran extends GetView<PesananController> {
                       ),
                     )),
                     Text(
-                      "10 kg",
+                      '${controller.kuantitasController.text} kg',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
@@ -67,16 +68,16 @@ class Pembayaran extends GetView<PesananController> {
               children: [
                 Expanded(
                     child: Obx((() => Text(
-                          controller.pilihan.value == ""
+                          controller.pewangi.value == ""
                               ? 'Parfum: Silakan pilih jenis parfum anda'
-                              : 'Parfum: ${controller.pilihan}',
+                              : 'Parfum: ${controller.pewangi}',
                           style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w700,
                             fontSize: 14,
                           ),
                         )))),
-                Obx((() => controller.pilihan.value == ""
+                Obx((() => controller.pewangi.value == ""
                     ? const ButtonSetPewangi()
                     : const ButtonClearPewangi())),
               ],
@@ -87,7 +88,7 @@ class Pembayaran extends GetView<PesananController> {
             margin: const EdgeInsets.fromLTRB(10, 30, 10, 0),
             padding: const EdgeInsets.all(10),
             color: Colors.grey,
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -99,7 +100,7 @@ class Pembayaran extends GetView<PesananController> {
                   ),
                 ),
                 Text(
-                  "Rp10.000",
+                  'Rp${NumberFormat.decimalPattern().format(controller.subTotal)}',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
@@ -120,7 +121,7 @@ class Pembayaran extends GetView<PesananController> {
           Container(
             margin: const EdgeInsets.only(top: 10),
             padding: const EdgeInsets.all(10),
-            child: const Row(
+            child: Row(
               children: [
                 Expanded(
                     child: Text(
@@ -132,7 +133,7 @@ class Pembayaran extends GetView<PesananController> {
                   ),
                 )),
                 Text(
-                  "Rp10.000",
+                  'Rp${NumberFormat.decimalPattern().format(controller.subTotal)}',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
@@ -145,7 +146,7 @@ class Pembayaran extends GetView<PesananController> {
           Container(
             margin: const EdgeInsets.only(top: 10),
             padding: const EdgeInsets.all(10),
-            child: const Row(
+            child: Row(
               children: [
                 Expanded(
                   child: Text(
@@ -158,7 +159,7 @@ class Pembayaran extends GetView<PesananController> {
                   ),
                 ),
                 Text(
-                  "+Rp528",
+                  '+Rp${controller.kodeUnik}',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
@@ -186,9 +187,9 @@ class Pembayaran extends GetView<PesananController> {
             color: Colors.grey,
             child: Row(
               children: [
-                const Expanded(
+                Expanded(
                     child: Text(
-                  "Rp10.528",
+                  'Rp${NumberFormat.decimalPattern().format(controller.total)}',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
@@ -266,7 +267,7 @@ class Pembayaran extends GetView<PesananController> {
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green, foregroundColor: Colors.white),
           onPressed: () {
-            if (controller.pilihan.value == "") {
+            if (controller.pewangi.value == "") {
               null;
             } else {
               Get.back();

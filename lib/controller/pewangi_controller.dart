@@ -48,7 +48,7 @@ class PewangiController extends GetxController {
 
   void setFixPewangi() {
     final controllerPesanan = Get.find<PesananController>();
-    controllerPesanan.pilihan.value = pilihan.value;
+    controllerPesanan.pewangi.value = pilihan.value;
   }
 
   Future<bool> saveFile(String nama) async {

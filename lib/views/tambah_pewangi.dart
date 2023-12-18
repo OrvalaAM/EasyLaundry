@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/controller/pewangi_controller.dart';
-
-import '../models/pesanan_model.dart';
-import '../models/pewangi_model.dart';
+// import '../models/pesanan_model.dart';
 
 class TambahPewangi extends GetView<PewangiController> {
   const TambahPewangi({super.key});
@@ -49,34 +47,34 @@ class TambahPewangi extends GetView<PewangiController> {
           TextField(
             controller: controller.namaParfumController,
           ),
-          FutureBuilder<List<PesananModel>>(
-            future: controller.db.getAllPesanan(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                if (snapshot.data!.isEmpty) {
-                  return const Center(
-                    child: Text("Tidak ada ]"),
-                  );
-                }
-                return ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index].nama ?? ''),
-                      subtitle: Text(snapshot.data![index].jenisLayanan ?? ''),
-                    );
-                  },
-                );
-              }
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                ),
-              );
-            },
-          ),
+          // FutureBuilder<List<PesananModel>>(
+          //   future: controller.db.getAllPesanan(),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.hasData) {
+          //       if (snapshot.data!.isEmpty) {
+          //         return const Center(
+          //           child: Text("Tidak ada ]"),
+          //         );
+          //       }
+          //       return ListView.builder(
+          //         physics: const NeverScrollableScrollPhysics(),
+          //         shrinkWrap: true,
+          //         itemCount: snapshot.data!.length,
+          //         itemBuilder: (context, index) {
+          //           return ListTile(
+          //             title: Text(snapshot.data![index].nama ?? ''),
+          //             subtitle: Text(snapshot.data![index].jenisLayanan ?? ''),
+          //           );
+          //         },
+          //       );
+          //     }
+          //     return const Center(
+          //       child: CircularProgressIndicator(
+          //         color: Colors.black,
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
       bottomSheet: SizedBox(
