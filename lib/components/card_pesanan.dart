@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mvp/models/pesanan_model.dart';
+import 'package:intl/intl.dart';
 
 class CardPesanan extends StatelessWidget {
   final PesananModel model;
@@ -82,7 +83,8 @@ class CardPesanan extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const Text('Total harga'),
-                    Text('Rp${model.harga!.toString()}'),
+                    Text(
+                        'Rp${NumberFormat.decimalPattern().format(model.total)}'),
                   ],
                 )
               ],

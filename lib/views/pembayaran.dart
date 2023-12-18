@@ -267,13 +267,9 @@ class Pembayaran extends GetView<PesananController> {
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green, foregroundColor: Colors.white),
           onPressed: () {
-            if (controller.pewangi.value == "") {
-              null;
-            } else {
-              Get.back();
-            }
+            controller.addPesanan();
           },
-          child: const Text("Lanjutkan"),
+          child: const Text("Submit"),
         ),
       ),
     );

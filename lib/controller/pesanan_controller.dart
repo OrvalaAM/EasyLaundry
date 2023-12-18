@@ -50,6 +50,9 @@ class PesananController extends GetxController {
       'kuantitas': kuantitasController.text,
       'harga': hargaController.text,
       'estimasi': estimasiController.text,
+      'subtotal': subTotal,
+      'kode_unik': kodeUnik,
+      'total': total,
       'pewangi': pewangi.value,
       'created_at': DateTime.now().toString(),
       'finished_at': DateTime.now()

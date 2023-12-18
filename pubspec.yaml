@@ -70,6 +70,8 @@ flutter:
     - assets/
     - assets/gambar_kosong.png
     - assets/status_card.png
+    - assets/status_detail.png
+    - assets/kirim_via.png
     - assets/icons/more.png
     - assets/icons/dompet.png
     - assets/icons/estimasi.png
