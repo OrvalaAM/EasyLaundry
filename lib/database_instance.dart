@@ -59,4 +59,8 @@ class DatabaseInstance {
     final query = await _database!.insert('pewangi', row);
     return query;
   }
+
+  Future deletePewangi(int id) async {
+    await _database!.delete('pewangi', where: 'id = ?', whereArgs: [id]);
+  }
 }

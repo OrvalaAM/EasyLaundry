@@ -34,9 +34,44 @@ class CardHapusPewangi extends GetView<PewangiController> {
         left: 0,
         child: IconButton(
           iconSize: 30,
-          icon: Icon(Icons.clear_rounded),
+          icon: const Icon(Icons.clear_rounded),
           color: Colors.red,
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Konfirmasi'),
+                  content: const Text('Apakah anda yakin ingin menghaous?'),
+                  actions: <Widget>[
+                    ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green),
+                      onPressed: () {
+                        controller.deletePewangi(model.id!, model.foto!);
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'Yes',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
         ),
       )
     ]);
