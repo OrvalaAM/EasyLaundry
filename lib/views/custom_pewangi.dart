@@ -18,7 +18,7 @@ class CustomPewangi extends GetView<PewangiController> {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
                   return const Center(
-                    child: Text("Tidak ada pesanan"),
+                    child: Text("Tidak ada pewangi"),
                   );
                 }
                 return Container(
