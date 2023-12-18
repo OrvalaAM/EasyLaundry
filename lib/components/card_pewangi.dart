@@ -13,7 +13,7 @@ class CardPewangi extends GetView<PewangiController> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 2,
-      height: 20,
+      height: MediaQuery.of(context).size.width / 2,
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         image: DecorationImage(

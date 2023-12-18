@@ -71,12 +71,12 @@ class CustomPewangi extends GetView<PewangiController> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed('/tambah_pewangi');
-        },
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Get.toNamed('/tambah_pewangi');
+      //   },
+      //   child: Icon(Icons.add),
+      // ),
       bottomSheet: SizedBox(
         width: double.infinity - 10,
         child: ElevatedButton(

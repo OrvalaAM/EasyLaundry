@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mvp/controller/pesanan_controller.dart';
-import 'package:mvp/controller/pewangi_controller.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class MenuPemilik extends StatelessWidget {
+  const MenuPemilik({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.find<PewangiController>();
-    Get.find<PesananController>();
     return Scaffold(
       body: Center(
         child: Column(
@@ -20,9 +16,9 @@ class Home extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
                 onPressed: () {
-                  Get.toNamed('/form_pemesanan');
+                  Get.toNamed('/daftar_pewangi');
                 },
-                child: const Text('Pegawai'),
+                child: const Text('Custom pewangi'),
               ),
             ),
             SizedBox(
@@ -30,9 +26,9 @@ class Home extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 onPressed: () {
-                  Get.toNamed('/menu_pemilik');
+                  Get.toNamed('/daftar_pesanan');
                 },
-                child: const Text('Pemilik',
+                child: const Text('Daftar pesanan',
                     style: TextStyle(color: Colors.white)),
               ),
             )

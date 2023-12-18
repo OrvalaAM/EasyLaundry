@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mvp/controller/pesanan_controller.dart';
 import 'package:mvp/database_instance.dart';
 import 'package:path_provider/path_provider.dart';
-// import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 
@@ -17,6 +16,7 @@ class PewangiController extends GetxController {
   File? selectedImage;
   var path = "".obs;
   var pilihan = "".obs;
+  var hapus = false.obs;
 
   @override
   Future<void> onInit() async {
@@ -33,13 +33,11 @@ class PewangiController extends GetxController {
   }
 
   Future pickImageFromGalery() async {
-    // if (await _requestPermission(Permission.storage)) {
     final returnedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (returnedImage == null) return;
     path.value = returnedImage.path;
     selectedImage = File(returnedImage.path);
-    // }
   }
 
   void setPilihanPewangi(nama) {
@@ -49,6 +47,10 @@ class PewangiController extends GetxController {
   void setFixPewangi() {
     final controllerPesanan = Get.find<PesananController>();
     controllerPesanan.pewangi.value = pilihan.value;
+  }
+
+  void modeHapus() {
+    hapus.value = !hapus.value;
   }
 
   Future<bool> saveFile(String nama) async {
@@ -77,17 +79,4 @@ class PewangiController extends GetxController {
     }).then((response) => Get.back());
     await saveFile(foto);
   }
-
-  // Future<bool> _requestPermission(Permission permission) async {
-  //   if (await permission.isGranted) {
-  //     return true;
-  //   } else {
-  //     var result = await permission.request();
-  //     if (result == PermissionStatus.granted) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
-  // }
 }
